@@ -91,7 +91,7 @@
 
     <header class="header">
         <img src="images/ju_logo.png" alt style="height: 70px; width: 65px">
-        <a href="#" class="logo" style="text-decoration: none;">DORMITOR MANAGEMENT SYSTEM</a>
+        <a href="#" class="logo" style="text-decoration: none;">DORMITORY MANAGEMENT SYSTEM</a>
         <nav class="navbar">
             <a href="#about" style=" text-decoration:none; ">About</a>
             <a href="#provost" style=" text-decoration:none; ">Notice</a>
