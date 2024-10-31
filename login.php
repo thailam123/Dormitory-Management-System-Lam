@@ -26,13 +26,22 @@
             /* Green */
             border: none;
             color: white;
-            border-radius: 5px 5px;
+            border-radius: 5px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            /* Smooth transition for background color and transform */
+        }
+
+        button:hover {
+            background-color: #45a049;
+            /* Darker green on hover */
+            transform: scale(1.05);
+            /* Slightly enlarge the button */
         }
     </style>
 </head>
@@ -46,15 +55,18 @@
                 <h1 style="color: white; ">ADMIN LOG IN</h1>
                 <form action="login process.php" method="POST">
 
-                    <input type="text" style="width: 50%; height:30px" id="user" name="username" placeholder="username" /><br><br>
-                    <input type="Password" style="width: 50%; height:30px" id="pass" name="password" placeholder="password" /><br><br>
+                    <input type="text" style="width: 50%; height:30px; border-radius:15px" id="user" name="username"
+                        placeholder="username" /><br><br>
+                    <input type="Password" style="width: 50%; height:30px; border-radius:15px" id="pass" name="password"
+                        placeholder="password" /><br><br>
                     <button type="submit" style="width: 15%; height:30px" id="btn" name="login" default>login</button>
             </div>
 
             </form>
         </div>
         <h1 style="color: blue; ">As A Student</h1>
-        <button type="submit" style="width: 15%; height:30px" id="btn" name="login" default><a href="../DMS/Student/signup.html">Signup</button>
+        <button type="submit" style="width: 15%; height:30px" id="btn" name="login" default><a
+                href="../DMS/Student/signup.html">Signup</button>
     </center>
 
 </body>
