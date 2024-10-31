@@ -750,7 +750,7 @@
 
             <div class="box">
                 <h3>follow us</h3>
-                <a target="_blank" href="https://www.facebook.com/ssbhju" target="_blank"
+                <a target="_blank" href="https://www.facebook.com/ctsv.hust.edu.vn" target="_blank"
                     style="text-decoration: none;"> <i class="fab fa-facebook-f"></i> facebook </a>
                 <a href="#" style="text-decoration: none;"> <i class="fab fa-twitter"></i> twitter </a>
                 <a href="#" style="text-decoration: none;"> <i class="fab fa-instagram"></i> instagram </a>
