@@ -1,73 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Login page</title>
-    <style>
-        body {
-            background: lightblue;
-            margin-left: 30px;
-        }
-
-        .loginbtn {
-            width: 50%;
-            height: 300px;
-            background-image: url(images/table1.jpg);
-
-        }
-
-        .div2 {
-            margin-top: 100px;
-
-        }
-
-        button {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            /* Smooth transition for background color and transform */
-        }
-
-        button:hover {
-            background-color: #45a049;
-            /* Darker green on hover */
-            transform: scale(1.05);
-            /* Slightly enlarge the button */
-        }
-    </style>
+    <title>Login V1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
 </head>
 
 <body>
 
-    <center>
-        <div class="loginbtn">
-            <!-- <p>Login</p> -->
-            <div class="div2">
-                <h1 style="color: white; ">ADMIN LOG IN</h1>
-                <form action="login process.php" method="POST">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="images/img-01.png" alt="IMG">
+                </div>
 
-                    <input type="text" style="width: 50%; height:30px; border-radius:15px" id="user" name="username"
-                        placeholder="username" /><br><br>
-                    <input type="Password" style="width: 50%; height:30px; border-radius:15px" id="pass" name="password"
-                        placeholder="password" /><br><br>
-                    <button type="submit" style="width: 15%; height:30px" id="btn" name="login" default>login</button>
+                <form class="login100-form validate-form" action="login process.php" method="POST">
+                    <span class="login100-form-title">
+                        Member Login
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" id="user" name="username" placeholder="Username">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" id="pass" name="password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit" id=" btn" name="login" default>
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-12">
+                        <span class="txt1">
+                            Forgot
+                        </span>
+                        <a class="txt2" href="#">
+                            Username / Password?
+                        </a>
+                    </div>
+
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="#">
+                            Create your Account
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
             </div>
-
-            </form>
         </div>
-        <h1 style="color: blue; ">As A Student</h1>
-        <button type="submit" style="width: 15%; height:30px" id="btn" name="login" default><a
-                href="../DMS/Student/signup.html">Signup</button>
-    </center>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 
 </body>
 
