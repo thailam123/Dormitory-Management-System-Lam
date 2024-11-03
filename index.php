@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DORMITORY MANAGEMENT SYSTEM</title>
+    <title>Website quản lý ở nội trú ký túc xá</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
@@ -777,7 +777,7 @@
                 <a class="btn btn-light btn-social" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="credit">
-                <h2>created by <span>Group 8</span> | @all rights reserved</h2>
+                <h2>created by <span>Group 1</span> | @all rights reserved</h2>
             </div>
         </div>
     </div>

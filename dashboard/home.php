@@ -12,7 +12,8 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
      <!-- CSS STYILE  -->
 
@@ -192,22 +193,28 @@
 
           <ul>
                <li>
-                    <a href="../Provost/DispProvost.php" style="text-decoration:none"><i class="fas fa-user-tie"></i> Provost </a>
+                    <a href="../Provost/DispProvost.php" style="text-decoration:none"><i class="fas fa-user-tie"></i>
+                         Provost </a>
                </li>
                <li>
-                    <a href="../Hall/DispHall.php" style="text-decoration:none"><i class="fas fa-building"></i> Hall </a>
+                    <a href="../Hall/DispHall.php" style="text-decoration:none"><i class="fas fa-building"></i> Hall
+                    </a>
                </li>
                <li>
-                    <a href="../Dining/Displayorder.php" style="text-decoration:none"><i class="fas fa-building"></i> Dining </a>
+                    <a href="../Dining/Displayorder.php" style="text-decoration:none"><i class="fas fa-building"></i>
+                         Dining </a>
                </li>
                <li>
-                    <a href="../Student/DispStudent.php" style="text-decoration:none"><i class="fas fa-book-reader"></i> Students</a>
+                    <a href="../Student/DispStudent.php" style="text-decoration:none"><i class="fas fa-book-reader"></i>
+                         Students</a>
                </li>
                <li>
-                    <a href="../Staff/DispStaff.php" style="text-decoration:none"><i class="fas fa-users"></i> Staffs</a>
+                    <a href="../Staff/DispStaff.php" style="text-decoration:none"><i class="fas fa-users"></i>
+                         Staffs</a>
                </li>
                <li>
-                    <a href="../Floor/DispFloor.php" style="text-decoration:none"><i class="fas fa-building"></i> Floors</a>
+                    <a href="../Floor/DispFloor.php" style="text-decoration:none"><i class="fas fa-building"></i>
+                         Floors</a>
 
                </li>
                <li>
@@ -215,11 +222,13 @@
 
                </li>
                <li>
-                    <a href="../FacilitiesProblem/DispFP.php" style="text-decoration:none"><i class="fas fa-exclamation-triangle"></i> Facilities Problem</a>
+                    <a href="../FacilitiesProblem/DispFP.php" style="text-decoration:none"><i
+                              class="fas fa-exclamation-triangle"></i> Facilities Problem</a>
 
                </li>
                <li>
-                    <a href="../message/disp.php" style="text-decoration:none"><i class="fas fa-envelope-open"></i> Messages</a>
+                    <a href="../message/disp.php" style="text-decoration:none"><i class="fas fa-envelope-open"></i>
+                         Messages</a>
                </li>
           </ul>
 
@@ -254,7 +263,7 @@
      <div class="mainpart">
 
           <div class="infocard">
-               <h1 id="hall">Dormitory Management System</h1>
+               <h1 id="hall">Dashboard</h1>
 
                <a href="../Provost/DispProvost.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
