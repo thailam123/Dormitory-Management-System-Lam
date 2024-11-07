@@ -205,6 +205,10 @@
                          Dining </a>
                </li>
                <li>
+                    <a href="../rent/DispRent.php" style="text-decoration:none"><i class="fas fa-building"></i>
+                         Rent fee </a>
+               </li>
+               <li>
                     <a href="../Student/DispStudent.php" style="text-decoration:none"><i class="fas fa-book-reader"></i>
                          Students</a>
                </li>
@@ -281,6 +285,22 @@
                     </div>
                </a>
 
+               <a href="../rent/DispRent.php" rel="" style="text-decoration:none">
+                    <div class="cardspecific" style="width: 26%;">
+                         rent fee
+                         <div class="number">
+                              <?php
+                              include 'connection.php';
+                              $sql = "select count(*) as total from rent_fee";
+                              $result = mysqli_query($conn, $sql);
+                              $data = mysqli_fetch_assoc($result);
+                              echo $data['total'];
+                              ?>
+                         </div>
+
+                    </div>
+               </a>
+
                <a href="../Student/DispStudent.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
                          Students
@@ -296,6 +316,7 @@
                          </div>
                     </div>
                </a>
+
 
                <a href="../Staff/DispStaff.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
