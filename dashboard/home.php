@@ -194,40 +194,37 @@
           <ul>
                <li>
                     <a href="../Provost/DispProvost.php" style="text-decoration:none"><i class="fas fa-user-tie"></i>
-                         Provost </a>
+                         Hiệu trưởng </a>
                </li>
                <li>
-                    <a href="../Hall/DispHall.php" style="text-decoration:none"><i class="fas fa-building"></i> Hall
+                    <a href="../Hall/DispHall.php" style="text-decoration:none"><i class="fas fa-building"></i> Tòa nhà
                     </a>
                </li>
-               <li>
-                    <a href="../Dining/Displayorder.php" style="text-decoration:none"><i class="fas fa-building"></i>
-                         Dining </a>
-               </li>
+
                <li>
                     <a href="../rent/DispRent.php" style="text-decoration:none"><i class="fas fa-building"></i>
-                         Rent fee </a>
+                         Phí thuê phòng </a>
                </li>
                <li>
                     <a href="../Student/DispStudent.php" style="text-decoration:none"><i class="fas fa-book-reader"></i>
-                         Students</a>
+                         Sinh viên</a>
                </li>
                <li>
                     <a href="../Staff/DispStaff.php" style="text-decoration:none"><i class="fas fa-users"></i>
-                         Staffs</a>
+                         Cán bộ</a>
                </li>
                <li>
                     <a href="../Floor/DispFloor.php" style="text-decoration:none"><i class="fas fa-building"></i>
-                         Floors</a>
+                         Tầng</a>
 
                </li>
                <li>
-                    <a href="../Room/DispRoom.php" style="text-decoration:none"><i class="fa fa-bed"></i> Rooms</a>
+                    <a href="../Room/DispRoom.php" style="text-decoration:none"><i class="fa fa-bed"></i> Phòng</a>
 
                </li>
                <li>
                     <a href="../FacilitiesProblem/DispFP.php" style="text-decoration:none"><i
-                              class="fas fa-exclamation-triangle"></i> Facilities Problem</a>
+                              class="fas fa-exclamation-triangle"></i> Vấn đề về cơ sở vật chất</a>
 
                </li>
                <li>
@@ -237,12 +234,12 @@
           </ul>
 
           <!-- logoutbutton -->
-          <div>
+          <div style="border: 2px solid #4B0082;border-radius: 50%;">
                <style>
                     .logout {
                          text-align: center;
                          margin-top: 10px;
-                         font-family: 'Mochiy Pop P One', sans-serif;
+                         font-family: 'Comic Sans MS', sans-serif;
                          font-weight: bolder;
                     }
 
@@ -254,7 +251,7 @@
                </style>
                <a style="text-decoration: none;" href="../index.php">
                     <div class="logout">
-                         Log Out
+                         Đăng xuất
 
                     </div>
                </a>
@@ -271,7 +268,7 @@
 
                <a href="../Provost/DispProvost.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
-                         Hall
+                         Tòa nhà
                          <div class="number">
                               <?php
                               include 'connection.php';
@@ -287,7 +284,7 @@
 
                <a href="../rent/DispRent.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
-                         rent fee
+                         Phí thuê phòng
                          <div class="number">
                               <?php
                               include 'connection.php';
@@ -303,7 +300,7 @@
 
                <a href="../Student/DispStudent.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
-                         Students
+                         Sinh viên
 
                          <div class="number">
                               <?php
@@ -320,7 +317,7 @@
 
                <a href="../Staff/DispStaff.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
-                         Staffs
+                         Cán bộ
 
                          <div class="number">
                               <?php
@@ -336,7 +333,7 @@
 
                <a href="../Floor/DispFloor.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 18%;">
-                         Floors
+                         Tầng
 
                          <div class="number">
                               <?php
@@ -352,7 +349,7 @@
 
                <a href="../Room/DispRoom.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 18%;">
-                         Rooms
+                         Phòng
 
                          <div class="number">
                               <?php
@@ -367,8 +364,8 @@
                </a>
 
                <a href="../FacilitiesProblem/DispFP.php" rel="" style="text-decoration:none">
-                    <div class="cardspecific" style="width: 25%;">
-                         Facilities Problem
+                    <div class="cardspecific" style="width: 35%;">
+                         Vấn đề về cơ sở vật chất
 
                          <div class="number">
                               <?php
