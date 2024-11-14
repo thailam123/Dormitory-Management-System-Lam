@@ -66,9 +66,9 @@
 
     <th> Mã số sinh viên </th>
     <th> Tên </th>
-    <th> Department </th>
+    <th> Khoa/viện </th>
     <th> Session </th>
-    <th> Hall </th>
+    <th> Tòa nhà </th>
     <th> Số phòng </th>
     <th> Số tầng </th>
     <th>Operations</th>
