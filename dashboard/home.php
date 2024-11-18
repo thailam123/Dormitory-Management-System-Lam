@@ -192,10 +192,7 @@
           </header>
 
           <ul>
-               <li>
-                    <a href="../Provost/DispProvost.php" style="text-decoration:none"><i class="fas fa-user-tie"></i>
-                         Hiệu trưởng </a>
-               </li>
+
                <li>
                     <a href="../Hall/DispHall.php" style="text-decoration:none"><i class="fas fa-building"></i> Tòa nhà
                     </a>
