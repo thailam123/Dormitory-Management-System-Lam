@@ -263,7 +263,7 @@
           <div class="infocard">
                <h1 id="hall">Dashboard</h1>
 
-               <a href="../Provost/DispProvost.php" rel="" style="text-decoration:none">
+               <a href="../Hall/DispHall.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 26%;">
                          Tòa nhà
                          <div class="number">
