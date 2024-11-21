@@ -75,7 +75,7 @@
           .mainpart {
                /* background: rgba(96, 193, 138, 0.722); */
                /* background: #90EE90; */
-               background-image: url(../images/images.jpg);
+               background-image: url("../images/images.jpg");
                width: 85%;
                height: 720px;
                float: right;
@@ -166,7 +166,7 @@
 
           #hall {
                font-size: 45px;
-               color: blue;
+               color: white;
                /* background: #CCE3F5; */
           }
      </style>
@@ -231,7 +231,7 @@
           </ul>
 
           <!-- logoutbutton -->
-          <div style="border: 2px solid #4B0082;border-radius: 50%;">
+          <div">
                <style>
                     .logout {
                          text-align: center;
@@ -252,7 +252,7 @@
 
                     </div>
                </a>
-          </div>
+     </div>
 
      </div>
 
