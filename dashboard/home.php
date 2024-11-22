@@ -302,7 +302,7 @@
                          <div class="number">
                               <?php
                               include 'connection.php';
-                              $sql = "select count(*) as total from student";
+                              $sql = "select count(*) as total from Student";
                               $result = mysqli_query($conn, $sql);
                               $data = mysqli_fetch_assoc($result);
                               echo $data['total'];

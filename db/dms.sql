@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2023 at 01:19 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 21, 2024 at 10:59 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -223,6 +223,32 @@ INSERT INTO `provost` (`P_ID`, `Phone`, `Name`, `Address`, `Email`, `Designation
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rent_fee`
+--
+
+CREATE TABLE `rent_fee` (
+  `Room_Number` int(20) NOT NULL,
+  `gia_thue_theo_thang` bigint(20) NOT NULL,
+  `ky_han_thue` varchar(20) NOT NULL,
+  `ngay_bat_dau_thue` text NOT NULL,
+  `ngay_ket_thuc_thue` text NOT NULL,
+  `tien_dien` mediumint(9) NOT NULL,
+  `tien_nuoc` mediumint(9) NOT NULL,
+  `tien_mang` mediumint(9) NOT NULL,
+  `trang_thai_thanh_toan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rent_fee`
+--
+
+INSERT INTO `rent_fee` (`Room_Number`, `gia_thue_theo_thang`, `ky_han_thue`, `ngay_bat_dau_thue`, `ngay_ket_thuc_thue`, `tien_dien`, `tien_nuoc`, `tien_mang`, `trang_thai_thanh_toan`) VALUES
+(101, 4000000, '2018-2020', '2/11/2018', '2/11/2020', 200000, 300000, 60000, 'Đã thanh toán'),
+(102, 3500000, '2019-2020', '2/10/2019', '2/10/2020', 100000, 200000, 50000, 'Chưa thanh toán');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `room`
 --
 
@@ -292,12 +318,14 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`Stu_id`, `Name`, `Department`, `Session`, `hall`, `Room_Number`, `Floor_Number`) VALUES
-(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019', 'RTH', 406, '4/B'),
+(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019', 'RTH', 407, '4/B'),
 (1234, 'Md. Solaiman Ali', 'IR', '2019-2020', 'RTH', 501, '5/B'),
 (2024, 'Mahbubur Rahman', 'IIT', '2018-2019', 'RTH', 104, '1/B'),
 (2022, 'Ashfaqur Rahman Tokee', 'IIT', '2018-2019', 'SRJ', 234, '2/A'),
 (2026, 'Mahfuz', 'CSE', '2018-2019', 'AFH', 309, '3/A'),
-(2028, 'Nahidul Islam', 'IIT', '2018-2019', 'RTH', 104, '1/B');
+(2028, 'Nahidul Islam', 'IIT', '2018-2019', 'RTH', 104, '1/B'),
+(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019', 'RTH', 407, '4/B'),
+(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019', 'RTH', 407, '4/B');
 
 --
 -- Indexes for dumped tables
@@ -326,6 +354,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `provost`
   ADD PRIMARY KEY (`P_ID`);
+
+--
+-- Indexes for table `rent_fee`
+--
+ALTER TABLE `rent_fee`
+  ADD PRIMARY KEY (`Room_Number`);
 
 --
 -- Indexes for table `room`

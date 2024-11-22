@@ -1,6 +1,6 @@
 <?php
 include_once 'connection.php';
-$sql = "DELETE FROM student WHERE Stu_id='" . $_GET["Stu_id"] . "'";
+$sql = "DELETE FROM Student WHERE Stu_id='" . $_GET["Stu_id"] . "'";
 if (mysqli_query($conn, $sql)) {
     include 'DispStudent.php';
 } else {

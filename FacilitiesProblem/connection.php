@@ -1,7 +1,7 @@
-<?php 
-$sname = "localhost";
+<?php
+$sname = "db";
 $uname = "root";
 $password = "";
-mysqli_connect('localhost','root',''); 
-$conn =  mysqli_connect($sname, $uname, $password, 'DMS'); 
+mysqli_connect('db', 'root', '');
+$conn = mysqli_connect($sname, $uname, $password, 'DMS');
 ?>

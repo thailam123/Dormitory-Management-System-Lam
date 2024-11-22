@@ -1,7 +1,7 @@
 <?php
 include_once 'connection.php';
 if (count($_POST) > 0) {
-  mysqli_query($conn, "UPDATE student set Stu_id='" . $_POST['Stu_id'] . "', Name='" . $_POST['Name'] . "', Department='" . $_POST['Department'] . "', Session='" . $_POST['Session'] . "' ,Room_Number='" . $_POST['Room_Number'] . "' ,Floor_Number='" . $_POST['Floor_Number'] . "' WHERE Stu_id='" . $_POST['Stu_id'] . "'");
+  mysqli_query($conn, "UPDATE Student set Stu_id='" . $_POST['Stu_id'] . "', Name='" . $_POST['Name'] . "', Department='" . $_POST['Department'] . "', Session='" . $_POST['Session'] . "' ,Room_Number='" . $_POST['Room_Number'] . "' ,Floor_Number='" . $_POST['Floor_Number'] . "' WHERE Stu_id='" . $_POST['Stu_id'] . "'");
   include "DispStudent.php";
 }
 $result = mysqli_query($conn, "SELECT * FROM Student WHERE Stu_id='" . $_GET['Stu_id'] . "'");
