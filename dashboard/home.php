@@ -206,10 +206,7 @@
                     <a href="../Student/DispStudent.php" style="text-decoration:none"><i class="fas fa-book-reader"></i>
                          Sinh viên</a>
                </li>
-               <li>
-                    <a href="../Staff/DispStaff.php" style="text-decoration:none"><i class="fas fa-users"></i>
-                         Cán bộ</a>
-               </li>
+
                <li>
                     <a href="../Floor/DispFloor.php" style="text-decoration:none"><i class="fas fa-building"></i>
                          Tầng</a>
@@ -312,21 +309,7 @@
                </a>
 
 
-               <a href="../Staff/DispStaff.php" rel="" style="text-decoration:none">
-                    <div class="cardspecific" style="width: 26%;">
-                         Cán bộ
 
-                         <div class="number">
-                              <?php
-                              include 'connection.php';
-                              $sql = "select count(*) as total from staff";
-                              $result = mysqli_query($conn, $sql);
-                              $data = mysqli_fetch_assoc($result);
-                              echo $data['total'];
-                              ?>
-                         </div>
-                    </div>
-               </a>
 
                <a href="../Floor/DispFloor.php" rel="" style="text-decoration:none">
                     <div class="cardspecific" style="width: 18%;">
