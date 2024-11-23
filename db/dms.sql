@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db:3306
--- Generation Time: Nov 23, 2024 at 05:24 AM
+-- Generation Time: Nov 23, 2024 at 05:30 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.2.8
 
@@ -20,27 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `DMS`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `facilities_problem`
---
-
-CREATE TABLE `facilities_problem` (
-  `Room_Number` int NOT NULL,
-  `Vacant_Seat` int NOT NULL,
-  `Damaged_Fan` int NOT NULL,
-  `Damaged_Light` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `facilities_problem`
---
-
-INSERT INTO `facilities_problem` (`Room_Number`, `Vacant_Seat`, `Damaged_Fan`, `Damaged_Light`) VALUES
-(101, 1, 2, 1),
-(102, 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -178,51 +157,6 @@ INSERT INTO `message_table` (`Stu_ID`, `Name`, `Room_Num`, `Messages`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
---
-
-CREATE TABLE `orders` (
-  `order_id` int NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `id` int NOT NULL,
-  `type` varchar(250) NOT NULL,
-  `quantity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `name`, `id`, `type`, `quantity`) VALUES
-(1, 'Md. Shakil Hossain ', 2023, 'breakfast', 1),
-(5, 'Zamshed Ikbal', 1997, 'dinner', 2),
-(6, 'Mahbubur Rahman', 2024, 'launch', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `provost`
---
-
-CREATE TABLE `provost` (
-  `P_ID` int NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Address` varchar(50) NOT NULL,
-  `Email` varchar(30) NOT NULL,
-  `Designation` varchar(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `provost`
---
-
-INSERT INTO `provost` (`P_ID`, `Phone`, `Name`, `Address`, `Email`, `Designation`) VALUES
-(500001, '0169696969', 'Muzibur Rahman', 'Islampur Thana More, Islampur, Jamalpur', 'muzibur@juniv.edu', 'Professor');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `rent_fee`
 --
 
@@ -277,29 +211,6 @@ INSERT INTO `room` (`Room_Number`, `Num_of_Table`, `Num_of_Bed`, `Floor_Number`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff`
---
-
-CREATE TABLE `staff` (
-  `S_ID` int NOT NULL,
-  `Name` varchar(40) NOT NULL,
-  `Address` varchar(50) NOT NULL,
-  `Email` varchar(30) NOT NULL,
-  `Designation` varchar(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`S_ID`, `Name`, `Address`, `Email`, `Designation`) VALUES
-(4001, 'motiur', 'Gerua, Savar', 'motiur.staff@juniv.edu', 'Office Assistant'),
-(102, 'Shohid', 'Ju', 'example@gmail.com', 'Staff'),
-(291, 'Shohel Rana', 'JU, Savar, Dhaka', 'sohel@gmail.com', 'Officer');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Student`
 --
 
@@ -345,18 +256,6 @@ ALTER TABLE `floor`
   ADD PRIMARY KEY (`Floor_Number`);
 
 --
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- Indexes for table `provost`
---
-ALTER TABLE `provost`
-  ADD PRIMARY KEY (`P_ID`);
-
---
 -- Indexes for table `rent_fee`
 --
 ALTER TABLE `rent_fee`
@@ -367,22 +266,6 @@ ALTER TABLE `rent_fee`
 --
 ALTER TABLE `room`
   ADD PRIMARY KEY (`Room_Number`);
-
---
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`S_ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
