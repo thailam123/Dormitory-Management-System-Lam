@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 10:59 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Host: db:3306
+-- Generation Time: Nov 23, 2024 at 05:24 AM
+-- Server version: 9.1.0
+-- PHP Version: 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dms`
+-- Database: `DMS`
 --
 
 -- --------------------------------------------------------
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `facilities_problem` (
-  `Room_Number` int(5) NOT NULL,
-  `Vacant_Seat` int(3) NOT NULL,
-  `Damaged_Fan` int(3) NOT NULL,
-  `Damaged_Light` int(3) NOT NULL
+  `Room_Number` int NOT NULL,
+  `Vacant_Seat` int NOT NULL,
+  `Damaged_Fan` int NOT NULL,
+  `Damaged_Light` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -49,17 +49,17 @@ INSERT INTO `facilities_problem` (`Room_Number`, `Vacant_Seat`, `Damaged_Fan`, `
 --
 
 CREATE TABLE `facility_problem` (
-  `Room_Number` int(11) NOT NULL,
-  `Damaged_Fan_Un` int(11) NOT NULL,
-  `Damaged_Fan_Pro` int(11) NOT NULL,
-  `Damaged_Fan_Sol` int(11) NOT NULL,
-  `Damaged_Light_Un` int(11) NOT NULL,
-  `Damaged_Light_Pro` int(11) NOT NULL,
-  `Damaged_Light_Sol` int(11) NOT NULL,
+  `Room_Number` int NOT NULL,
+  `Damaged_Fan_Un` int NOT NULL,
+  `Damaged_Fan_Pro` int NOT NULL,
+  `Damaged_Fan_Sol` int NOT NULL,
+  `Damaged_Light_Un` int NOT NULL,
+  `Damaged_Light_Pro` int NOT NULL,
+  `Damaged_Light_Sol` int NOT NULL,
   `Modified_Date` date NOT NULL,
-  `total_uv` int(20) DEFAULT NULL,
-  `total_pro` int(20) DEFAULT NULL,
-  `total_sol` int(20) DEFAULT NULL
+  `total_uv` int DEFAULT NULL,
+  `total_pro` int DEFAULT NULL,
+  `total_sol` int DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -69,7 +69,8 @@ CREATE TABLE `facility_problem` (
 INSERT INTO `facility_problem` (`Room_Number`, `Damaged_Fan_Un`, `Damaged_Fan_Pro`, `Damaged_Fan_Sol`, `Damaged_Light_Un`, `Damaged_Light_Pro`, `Damaged_Light_Sol`, `Modified_Date`, `total_uv`, `total_pro`, `total_sol`) VALUES
 (101, 2, 3, 4, 5, 34, 4, '2022-01-04', NULL, NULL, NULL),
 (234, 1, 2, 3, 4, 5, 6, '2022-01-26', NULL, NULL, NULL),
-(321, 3, 2, 5, 1, 3, 2, '2022-01-26', NULL, NULL, NULL);
+(321, 3, 2, 5, 1, 3, 2, '2022-01-26', NULL, NULL, NULL),
+(322, 1, 1, 1, 1, 1, 1, '2024-11-22', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -80,9 +81,9 @@ INSERT INTO `facility_problem` (`Room_Number`, `Damaged_Fan_Un`, `Damaged_Fan_Pr
 CREATE TABLE `floor` (
   `Floor_Number` varchar(10) NOT NULL,
   `Block` varchar(10) NOT NULL,
-  `Num_of_Kitchen` int(5) NOT NULL,
-  `Num_of_Room` int(5) NOT NULL,
-  `Num_of_Washroom` int(5) NOT NULL
+  `Num_of_Kitchen` int NOT NULL,
+  `Num_of_Room` int NOT NULL,
+  `Num_of_Washroom` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -105,19 +106,18 @@ INSERT INTO `floor` (`Floor_Number`, `Block`, `Num_of_Kitchen`, `Num_of_Room`, `
 --
 
 CREATE TABLE `hall` (
-  `H_ID` int(11) NOT NULL,
+  `H_ID` int NOT NULL,
   `H_Name` varchar(250) NOT NULL,
-  `T_Seat` int(11) NOT NULL,
-  `A_Seat` int(11) NOT NULL,
-  `N_Student` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `T_Seat` int NOT NULL,
+  `A_Seat` int NOT NULL,
+  `N_Student` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `hall`
 --
 
 INSERT INTO `hall` (`H_ID`, `H_Name`, `T_Seat`, `A_Seat`, `N_Student`) VALUES
-(1, 'Mir Mosharraf Hossain Hall', 800, 50, 750),
 (2, 'Shaheed Salam-Barkat Hall', 400, 0, 400),
 (3, 'Bangabandhu Sheikh Mujibur Rahman Hall', 500, 10, 490),
 (4, 'Al Beruni Hall', 400, 50, 350),
@@ -141,10 +141,10 @@ INSERT INTO `hall` (`H_ID`, `H_Name`, `T_Seat`, `A_Seat`, `N_Student`) VALUES
 --
 
 CREATE TABLE `login` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `login`
@@ -160,7 +160,7 @@ INSERT INTO `login` (`id`, `username`, `password`) VALUES
 --
 
 CREATE TABLE `message_table` (
-  `Stu_ID` int(20) DEFAULT NULL,
+  `Stu_ID` int DEFAULT NULL,
   `Name` varchar(20) NOT NULL,
   `Room_Num` varchar(20) DEFAULT NULL,
   `Messages` varchar(100) NOT NULL
@@ -182,12 +182,12 @@ INSERT INTO `message_table` (`Stu_ID`, `Name`, `Room_Num`, `Messages`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
+  `order_id` int NOT NULL,
   `name` varchar(250) NOT NULL,
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `type` varchar(250) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `quantity` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `orders`
@@ -205,7 +205,7 @@ INSERT INTO `orders` (`order_id`, `name`, `id`, `type`, `quantity`) VALUES
 --
 
 CREATE TABLE `provost` (
-  `P_ID` int(10) NOT NULL,
+  `P_ID` int NOT NULL,
   `Phone` varchar(15) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Address` varchar(50) NOT NULL,
@@ -227,16 +227,16 @@ INSERT INTO `provost` (`P_ID`, `Phone`, `Name`, `Address`, `Email`, `Designation
 --
 
 CREATE TABLE `rent_fee` (
-  `Room_Number` int(20) NOT NULL,
-  `gia_thue_theo_thang` bigint(20) NOT NULL,
+  `Room_Number` int NOT NULL,
+  `gia_thue_theo_thang` bigint NOT NULL,
   `ky_han_thue` varchar(20) NOT NULL,
   `ngay_bat_dau_thue` text NOT NULL,
   `ngay_ket_thuc_thue` text NOT NULL,
-  `tien_dien` mediumint(9) NOT NULL,
-  `tien_nuoc` mediumint(9) NOT NULL,
-  `tien_mang` mediumint(9) NOT NULL,
+  `tien_dien` mediumint NOT NULL,
+  `tien_nuoc` mediumint NOT NULL,
+  `tien_mang` mediumint NOT NULL,
   `trang_thai_thanh_toan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `rent_fee`
@@ -253,9 +253,9 @@ INSERT INTO `rent_fee` (`Room_Number`, `gia_thue_theo_thang`, `ky_han_thue`, `ng
 --
 
 CREATE TABLE `room` (
-  `Room_Number` int(20) NOT NULL,
-  `Num_of_Table` int(15) NOT NULL,
-  `Num_of_Bed` int(5) NOT NULL,
+  `Room_Number` int NOT NULL,
+  `Num_of_Table` int NOT NULL,
+  `Num_of_Bed` int NOT NULL,
   `Floor_Number` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -281,7 +281,7 @@ INSERT INTO `room` (`Room_Number`, `Num_of_Table`, `Num_of_Bed`, `Floor_Number`)
 --
 
 CREATE TABLE `staff` (
-  `S_ID` int(10) NOT NULL,
+  `S_ID` int NOT NULL,
   `Name` varchar(40) NOT NULL,
   `Address` varchar(50) NOT NULL,
   `Email` varchar(30) NOT NULL,
@@ -300,32 +300,33 @@ INSERT INTO `staff` (`S_ID`, `Name`, `Address`, `Email`, `Designation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student`
+-- Table structure for table `Student`
 --
 
-CREATE TABLE `student` (
-  `Stu_id` int(10) NOT NULL,
+CREATE TABLE `Student` (
+  `Stu_id` int NOT NULL,
   `Name` varchar(40) NOT NULL,
   `Department` varchar(30) NOT NULL,
   `Session` varchar(20) NOT NULL,
   `hall` varchar(250) NOT NULL,
-  `Room_Number` int(10) NOT NULL,
+  `Room_Number` int NOT NULL,
   `Floor_Number` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `student`
+-- Dumping data for table `Student`
 --
 
-INSERT INTO `student` (`Stu_id`, `Name`, `Department`, `Session`, `hall`, `Room_Number`, `Floor_Number`) VALUES
-(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019', 'RTH', 407, '4/B'),
+INSERT INTO `Student` (`Stu_id`, `Name`, `Department`, `Session`, `hall`, `Room_Number`, `Floor_Number`) VALUES
+(2030, 'Nahidul Isla', 'CSE', '2019-2020', 'SRJ', 309, '3/A'),
 (1234, 'Md. Solaiman Ali', 'IR', '2019-2020', 'RTH', 501, '5/B'),
 (2024, 'Mahbubur Rahman', 'IIT', '2018-2019', 'RTH', 104, '1/B'),
 (2022, 'Ashfaqur Rahman Tokee', 'IIT', '2018-2019', 'SRJ', 234, '2/A'),
 (2026, 'Mahfuz', 'CSE', '2018-2019', 'AFH', 309, '3/A'),
 (2028, 'Nahidul Islam', 'IIT', '2018-2019', 'RTH', 104, '1/B'),
-(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019', 'RTH', 407, '4/B'),
-(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019', 'RTH', 407, '4/B');
+(2028, 'Nahidul Islam', 'IIT', '2018-2019', 'SRJ', 104, '1/B'),
+(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019	', 'SRJ', 407, '4/B'),
+(2020, 'Md. Solaiman Ali', 'IIT', '2018-2019', 'SRJ', 407, '2/A');
 
 --
 -- Indexes for dumped tables
@@ -381,7 +382,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
