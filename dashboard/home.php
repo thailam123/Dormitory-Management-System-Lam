@@ -208,6 +208,11 @@
                </li>
 
                <li>
+                    <a href="../testsql.php" style="text-decoration:none"><i class="fas fa-book-reader"></i>
+                         test</a>
+               </li>
+
+               <li>
                     <a href="../Floor/DispFloor.php" style="text-decoration:none"><i class="fas fa-building"></i>
                          Tầng</a>
 

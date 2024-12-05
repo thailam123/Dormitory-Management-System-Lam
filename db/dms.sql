@@ -1,273 +1,261 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: db:3306
--- Generation Time: Nov 23, 2024 at 05:30 AM
--- Server version: 9.1.0
--- PHP Version: 8.2.8
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `DMS`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `facility_problem`
---
-
-CREATE TABLE `facility_problem` (
-  `Room_Number` int NOT NULL,
-  `Damaged_Fan_Un` int NOT NULL,
-  `Damaged_Fan_Pro` int NOT NULL,
-  `Damaged_Fan_Sol` int NOT NULL,
-  `Damaged_Light_Un` int NOT NULL,
-  `Damaged_Light_Pro` int NOT NULL,
-  `Damaged_Light_Sol` int NOT NULL,
-  `Modified_Date` date NOT NULL,
-  `total_uv` int DEFAULT NULL,
-  `total_pro` int DEFAULT NULL,
-  `total_sol` int DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `facility_problem`
---
-
-INSERT INTO `facility_problem` (`Room_Number`, `Damaged_Fan_Un`, `Damaged_Fan_Pro`, `Damaged_Fan_Sol`, `Damaged_Light_Un`, `Damaged_Light_Pro`, `Damaged_Light_Sol`, `Modified_Date`, `total_uv`, `total_pro`, `total_sol`) VALUES
-(101, 2, 3, 4, 5, 34, 4, '2022-01-04', NULL, NULL, NULL),
-(234, 1, 2, 3, 4, 5, 6, '2022-01-26', NULL, NULL, NULL),
-(321, 3, 2, 5, 1, 3, 2, '2022-01-26', NULL, NULL, NULL),
-(322, 1, 1, 1, 1, 1, 1, '2024-11-22', NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `floor`
---
-
-CREATE TABLE `floor` (
-  `Floor_Number` varchar(10) NOT NULL,
-  `Block` varchar(10) NOT NULL,
-  `Num_of_Kitchen` int NOT NULL,
-  `Num_of_Room` int NOT NULL,
-  `Num_of_Washroom` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `floor`
---
-
-INSERT INTO `floor` (`Floor_Number`, `Block`, `Num_of_Kitchen`, `Num_of_Room`, `Num_of_Washroom`) VALUES
-('1/A', 'A', 4, 100, 20),
-('2/B', 'B', 6, 150, 30),
-('1/B', 'B', 43, 321, 1),
-('4', 'A', 2, 40, 3),
-('3', 'B', 3, 20, 5),
-('1', 'A', 3, 22, 2),
-('6', 'B', 7, 43, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hall`
---
-
+-- Table structure for `hall`
 CREATE TABLE `hall` (
-  `H_ID` int NOT NULL,
+  `H_ID` int NOT NULL AUTO_INCREMENT,
   `H_Name` varchar(250) NOT NULL,
-  `T_Seat` int NOT NULL,
-  `A_Seat` int NOT NULL,
-  `N_Student` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Status` boolean NOT NULL,
+  PRIMARY KEY (`H_ID`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `hall`
---
+-- Table structure for `floor`
+CREATE TABLE `floor` (
+  `F_ID` int NOT NULL AUTO_INCREMENT,
+  `Floor_Number` varchar(10) NOT NULL,
+  `H_ID` int NOT NULL,
+  `Num_of_Room` int NOT NULL,
+  `Status` boolean NOT NULL,
+  PRIMARY KEY (`F_ID`),
+  FOREIGN KEY (`H_ID`) REFERENCES `hall`(`H_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
-INSERT INTO `hall` (`H_ID`, `H_Name`, `T_Seat`, `A_Seat`, `N_Student`) VALUES
-(2, 'Shaheed Salam-Barkat Hall', 400, 0, 400),
-(3, 'Bangabandhu Sheikh Mujibur Rahman Hall', 500, 10, 490),
-(4, 'Al Beruni Hall', 400, 50, 350),
-(5, 'Shaheed Rafiq-Jabbar Hall', 500, 0, 500),
-(6, 'A F M Kamaluddin Hall', 400, 100, 300),
-(7, 'Mowlana Bhashani Hall', 600, 200, 400),
-(8, 'Bishwakabi Rabindranath Tagore Hall', 400, 0, 400),
-(9, 'Jahanara Imam Hall', 200, 50, 150),
-(10, 'Nawab Faizunnesa Hall', 100, 20, 80),
-(11, 'Pritilata Hall', 300, 60, 240),
-(12, 'Fazilatunnesa Hall', 150, 50, 100),
-(13, 'Begum Khaleda Zia Hall', 400, 100, 300),
-(14, 'Sheikh Hasina Hall', 500, 100, 400),
-(15, 'Bangamata Begum Fazilatunnessa Mujib Hall', 600, 100, 500),
-(16, 'Begum Sufia Kamal Hall', 400, 20, 380);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `login`
---
-
+-- Table structure for `login`
 CREATE TABLE `login` (
-  `id` int NOT NULL,
   `username` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `password` varchar(250) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `message_table`
---
-
-CREATE TABLE `message_table` (
-  `Stu_ID` int DEFAULT NULL,
-  `Name` varchar(20) NOT NULL,
-  `Room_Num` varchar(20) DEFAULT NULL,
-  `Messages` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `message_table`
---
-
-INSERT INTO `message_table` (`Stu_ID`, `Name`, `Room_Num`, `Messages`) VALUES
-(2013, 'Shakil Ahmed', '125/A', 'problem a fan and light'),
-(2090, 'Amit Azim', '125/A', 'Door problem'),
-(2090, 'Amit Azim', '125/A', 'Door problem');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rent_fee`
---
-
-CREATE TABLE `rent_fee` (
-  `Room_Number` int NOT NULL,
-  `gia_thue_theo_thang` bigint NOT NULL,
-  `ky_han_thue` varchar(20) NOT NULL,
-  `ngay_bat_dau_thue` text NOT NULL,
-  `ngay_ket_thuc_thue` text NOT NULL,
-  `tien_dien` mediumint NOT NULL,
-  `tien_nuoc` mediumint NOT NULL,
-  `tien_mang` mediumint NOT NULL,
-  `trang_thai_thanh_toan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `rent_fee`
---
-
-INSERT INTO `rent_fee` (`Room_Number`, `gia_thue_theo_thang`, `ky_han_thue`, `ngay_bat_dau_thue`, `ngay_ket_thuc_thue`, `tien_dien`, `tien_nuoc`, `tien_mang`, `trang_thai_thanh_toan`) VALUES
-(101, 4000000, '2018-2020', '2/11/2018', '2/11/2020', 200000, 300000, 60000, 'Đã thanh toán'),
-(102, 3500000, '2019-2020', '2/10/2019', '2/10/2020', 100000, 200000, 50000, 'Chưa thanh toán');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room`
---
-
+-- Table structure for `room`
 CREATE TABLE `room` (
-  `Room_Number` int NOT NULL,
+  `R_ID` int NOT NULL AUTO_INCREMENT,
+  `R_Name` varchar(20) NOT NULL,
+  `F_ID` int NOT NULL,
   `Num_of_Table` int NOT NULL,
   `Num_of_Bed` int NOT NULL,
-  `Floor_Number` varchar(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `Gender` boolean NOT NULL,
+  `Status` boolean NOT NULL,
+  PRIMARY KEY (`R_ID`), 
+  FOREIGN KEY (`F_ID`) REFERENCES `floor`(`F_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `room`
---
-
-INSERT INTO `room` (`Room_Number`, `Num_of_Table`, `Num_of_Bed`, `Floor_Number`) VALUES
-(101, 4, 2, '4/A'),
-(102, 3, 2, '4/B'),
-(103, 2, 4, '1/B'),
-(104, 4, 3, '2/A'),
-(105, 4, 4, '5/B'),
-(504, 3, 2, '5/B'),
-(234, 4, 4, '2/A'),
-(320, 1, 4, '3/A'),
-(410, 3, 4, '4/B');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Student`
---
-
+-- Table structure for `student`
 CREATE TABLE `Student` (
   `Stu_id` int NOT NULL,
   `Name` varchar(40) NOT NULL,
-  `Department` varchar(30) NOT NULL,
-  `Session` varchar(20) NOT NULL,
-  `hall` varchar(250) NOT NULL,
-  `Room_Number` int NOT NULL,
-  `Floor_Number` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `DOB` date NOT NULL,
+  `Phone_number` VARCHAR(10) NOT NULL,
+  `Email` VARCHAR(100) NOT NULL,
+  `Gender` boolean NOT NULL,
+  `R_ID` int NOT NULL,
+  PRIMARY KEY (`Stu_id`),
+  FOREIGN KEY (`R_ID`) REFERENCES `room`(`R_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `Student`
---
+-- Table structure for `rent_fee`
+CREATE TABLE `rent_fee` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `R_ID` int NOT NULL,
+  `Period` varchar(30) NOT NULL,
+  `Room_Bill` float NOT NULL,
+  `Elec_Bill` float NOT NULL,
+  `Internet_Bill` float NOT NULL,
+  `Water_Bill` float NOT NULL,
+  `Status` boolean NOT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`R_ID`) REFERENCES `room`(`R_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `Student` (`Stu_id`, `Name`, `Department`, `Session`, `hall`, `Room_Number`, `Floor_Number`) VALUES
-(2030, 'Nahidul Isla', 'CSE', '2019-2020', 'SRJ', 309, '3/A'),
-(1234, 'Md. Solaiman Ali', 'IR', '2019-2020', 'RTH', 501, '5/B'),
-(2024, 'Mahbubur Rahman', 'IIT', '2018-2019', 'RTH', 104, '1/B'),
-(2022, 'Ashfaqur Rahman Tokee', 'IIT', '2018-2019', 'SRJ', 234, '2/A'),
-(2026, 'Mahfuz', 'CSE', '2018-2019', 'AFH', 309, '3/A'),
-(2028, 'Nahidul Islam', 'IIT', '2018-2019', 'RTH', 104, '1/B'),
-(2028, 'Nahidul Islam', 'IIT', '2018-2019', 'SRJ', 104, '1/B'),
-(2023, 'Md. Shakil Hossain', 'IIT', '2018-2019	', 'SRJ', 407, '4/B'),
-(2020, 'Md. Solaiman Ali', 'IIT', '2018-2019', 'SRJ', 407, '2/A');
+-- Table structure for `facility_problem`
+CREATE TABLE `facility_problem` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `R_ID` int NOT NULL,
+  `Content` varchar(100) NOT NULL,
+  `Status` boolean NOT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`R_ID`) REFERENCES `room`(`R_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for dumped tables
---
+-- Table structure for `message_table`
+CREATE TABLE `message_table` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID_student` int(20) DEFAULT NULL,
+  `Name` varchar(20) NOT NULL,
+  `R_Name` varchar(20) DEFAULT NULL,
+  `Messages` varchar(100) NOT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`ID_student`) REFERENCES `student`(`Stu_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for table `facility_problem`
---
-ALTER TABLE `facility_problem`
-  ADD PRIMARY KEY (`Room_Number`);
+INSERT INTO `login` (`username`, `password`) VALUES
+('admin', 'admin'),
+('lam@example.com', '12345678'),
+('duc@example.com', '12345678'),
+('kyanh@example.com', '12345678'),
+('my@example.com', '12345678');
 
---
--- Indexes for table `floor`
---
-ALTER TABLE `floor`
-  ADD PRIMARY KEY (`Floor_Number`);
 
---
--- Indexes for table `rent_fee`
---
-ALTER TABLE `rent_fee`
-  ADD PRIMARY KEY (`Room_Number`);
+INSERT INTO `hall` (`H_ID`, `H_Name`, `Status`) VALUES
+(NULL, 'B5', 1),
+(NULL, 'B6', 1),
+(NULL, 'B7', 1),
+(NULL, 'B8', 1),
+(NULL, 'B9', 1);
 
---
--- Indexes for table `room`
---
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`Room_Number`);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `floor` (`Floor_Number`, `H_ID`, `Num_of_Room`, `Status`) VALUES
+('B5/F1', 1, 10, 1),
+('B5/F2', 1, 10, 1),
+('B5/F3', 1, 10, 1),
+('B5/F4', 1, 10, 1),
+('B6/F1', 2, 10, 1),
+('B6/F2', 2, 10, 1),
+('B6/F3', 2, 10, 1),
+('B6/F4', 2, 10, 1),
+('B7/F1', 3, 10, 1),
+('B7/F2', 3, 10, 1),
+('B7/F3', 3, 10, 1),
+('B7/F4', 3, 10, 1),
+('B8/F1', 4, 10, 1),
+('B8/F2', 4, 10, 1),
+('B8/F3', 4, 10, 1),
+('B8/F4', 4, 10, 1),
+('B9/F1', 5, 10, 1),
+('B9/F2', 5, 10, 1),
+('B9/F3', 5, 10, 1),
+('B9/F4', 5, 10, 1);
+
+
+
+
+INSERT INTO `room` (`R_Name`, `F_ID`, `Num_of_Table`, `Num_of_Bed`, `Gender`, `Status`) VALUES
+('B5F101', 1, 2, 4, 1, 1), ('B5F102', 1, 1, 3, 0, 0), ('B5F103', 1, 2, 2, 1, 1), ('B5F104', 1, 1, 3, 0, 1), 
+('B5F105', 1, 3, 4, 1, 1), ('B5F106', 1, 2, 3, 0, 0), ('B5F107', 1, 1, 2, 1, 1), ('B5F108', 1, 2, 3, 0, 1), 
+('B5F109', 1, 3, 4, 1, 1), ('B5F110', 1, 1, 3, 0, 0),
+('B5F201', 2, 2, 4, 1, 1), ('B5F202', 2, 1, 2, 0, 1), ('B5F203', 2, 3, 4, 1, 0), ('B5F204', 2, 2, 3, 0, 1), 
+('B5F205', 2, 1, 3, 1, 1), ('B5F206', 2, 3, 4, 0, 0), ('B5F207', 2, 2, 2, 1, 1), ('B5F208', 2, 1, 3, 0, 1), 
+('B5F209', 2, 2, 4, 1, 0), ('B5F210', 2, 1, 2, 0, 1),
+('B5F301', 3, 3, 4, 1, 1), ('B5F302', 3, 1, 2, 0, 0), ('B5F303', 3, 2, 3, 1, 1), ('B5F304', 3, 1, 3, 0, 1), 
+('B5F305', 3, 2, 4, 1, 0), ('B5F306', 3, 1, 2, 0, 1), ('B5F307', 3, 3, 4, 1, 1), ('B5F308', 3, 2, 3, 0, 0), 
+('B5F309', 3, 1, 2, 1, 1), ('B5F310', 3, 2, 3, 0, 1),
+('B5F401', 4, 2, 4, 1, 1), ('B5F402', 4, 1, 3, 0, 0), ('B5F403', 4, 3, 4, 1, 1), ('B5F404', 4, 2, 3, 0, 1), 
+('B5F405', 4, 1, 2, 1, 0), ('B5F406', 4, 2, 4, 0, 1), ('B5F407', 4, 3, 3, 1, 1), ('B5F408', 4, 1, 2, 0, 0), 
+('B5F409', 4, 2, 4, 1, 1), ('B5F410', 4, 1, 3, 0, 1),
+
+('B6F101', 5, 3, 4, 1, 1), ('B6F102', 5, 2, 3, 0, 1), ('B6F103', 5, 1, 2, 1, 0), ('B6F104', 5, 3, 4, 0, 1), 
+('B6F105', 5, 2, 3, 1, 1), ('B6F106', 5, 1, 2, 0, 0), ('B6F107', 5, 3, 4, 1, 1), ('B6F108', 5, 2, 3, 0, 1), 
+('B6F109', 5, 1, 3, 1, 1), ('B6F110', 5, 2, 4, 0, 0),
+('B6F201', 6, 3, 4, 1, 1), ('B6F202', 6, 2, 3, 0, 1), ('B6F203', 6, 1, 2, 1, 0), ('B6F204', 6, 3, 4, 0, 1),
+('B6F205', 6, 2, 3, 1, 1), ('B6F206', 6, 1, 2, 0, 0), ('B6F207', 6, 3, 4, 1, 1), ('B6F208', 6, 2, 3, 0, 1),
+('B6F209', 6, 1, 3, 1, 1), ('B6F210', 6, 2, 4, 0, 0),
+
+('B7F101', 9, 1, 3, 1, 1), ('B7F102', 9, 2, 4, 0, 1), ('B7F103', 9, 3, 2, 1, 0), ('B7F104', 9, 1, 3, 0, 1), 
+('B7F105', 9, 2, 4, 1, 1), ('B7F106', 9, 3, 3, 0, 0), ('B7F107', 9, 1, 2, 1, 1), ('B7F108', 9, 2, 4, 0, 1), 
+('B7F109', 9, 3, 3, 1, 1), ('B7F110', 9, 1, 2, 0, 0),
+('B7F201', 10, 2, 3, 1, 1), ('B7F202', 10, 3, 4, 0, 1), ('B7F203', 10, 1, 2, 1, 0), ('B7F204', 10, 2, 4, 0, 1), 
+('B7F205', 10, 3, 3, 1, 1), ('B7F206', 10, 1, 2, 0, 0), ('B7F207', 10, 2, 4, 1, 1), ('B7F208', 10, 3, 3, 0, 1), 
+('B7F209', 10, 1, 2, 1, 1), ('B7F210', 10, 2, 4, 0, 0),
+('B7F301', 11, 3, 3, 1, 1), ('B7F302', 11, 1, 2, 0, 1), ('B7F303', 11, 2, 4, 1, 0), ('B7F304', 11, 3, 3, 0, 1), 
+('B7F305', 11, 1, 2, 1, 1), ('B7F306', 11, 2, 4, 0, 0), ('B7F307', 11, 3, 3, 1, 1), ('B7F308', 11, 1, 2, 0, 1), 
+('B7F309', 11, 2, 4, 1, 0), ('B7F310', 11, 3, 3, 0, 1),
+('B7F401', 12, 1, 2, 1, 1), ('B7F402', 12, 2, 4, 0, 1), ('B7F403', 12, 3, 3, 1, 0), ('B7F404', 12, 1, 2, 0, 1), 
+('B7F405', 12, 2, 4, 1, 1), ('B7F406', 12, 3, 3, 0, 0), ('B7F407', 12, 1, 2, 1, 1), ('B7F408', 12, 2, 4, 0, 1), 
+('B7F409', 12, 3, 3, 1, 1), ('B7F410', 12, 1, 2, 0, 0),
+
+('B8F101', 13, 2, 3, 1, 1), ('B8F102', 13, 3, 4, 0, 1), ('B8F103', 13, 1, 2, 1, 0), ('B8F104', 13, 2, 3, 0, 1), 
+('B8F105', 13, 3, 4, 1, 1), ('B8F106', 13, 1, 2, 0, 0), ('B8F107', 13, 2, 3, 1, 1), ('B8F108', 13, 3, 4, 0, 1), 
+('B8F109', 13, 1, 3, 1, 1), ('B8F110', 13, 2, 4, 0, 0),
+('B8F201', 14, 3, 3, 1, 1), ('B8F202', 14, 1, 2, 0, 1), ('B8F203', 14, 2, 4, 1, 0), ('B8F204', 14, 3, 3, 0, 1), 
+('B8F205', 14, 1, 2, 1, 1), ('B8F206', 14, 2, 4, 0, 0), ('B8F207', 14, 3, 3, 1, 1), ('B8F208', 14, 1, 2, 0, 1), 
+('B8F209', 14, 2, 4, 1, 0), ('B8F210', 14, 3, 3, 0, 1),
+('B8F301', 15, 2, 4, 1, 1), ('B8F302', 15, 3, 3, 0, 1), ('B8F303', 15, 1, 2, 1, 0), ('B8F304', 15, 2, 3, 0, 1), 
+('B8F305', 15, 3, 4, 1, 1), ('B8F306', 15, 1, 2, 0, 0), ('B8F307', 15, 2, 3, 1, 1), ('B8F308', 15, 3, 4, 0, 1), 
+('B8F309', 15, 1, 3, 1, 1), ('B8F310', 15, 2, 4, 0, 0),
+('B8F401', 16, 3, 4, 1, 1), ('B8F402', 16, 1, 3, 0, 1), ('B8F403', 16, 2, 4, 1, 0), ('B8F404', 16, 3, 3, 0, 1), 
+('B8F405', 16, 1, 2, 1, 1), ('B8F406', 16, 2, 3, 0, 0), ('B8F407', 16, 3, 4, 1, 1), ('B8F408', 16, 1, 3, 0, 1), 
+('B8F409', 16, 2, 4, 1, 0), ('B8F410', 16, 3, 3, 0, 1),
+
+('B9F101', 17, 2, 4, 1, 1), ('B9F102', 17, 1, 3, 0, 1), ('B9F103', 17, 3, 4, 1, 0), ('B9F104', 17, 2, 3, 0, 1), 
+('B9F105', 17, 2, 4, 1, 0), ('B9F106', 17, 1, 3, 1, 1), ('B9F107', 17, 3, 4, 0, 1), ('B9F108', 17, 2, 3, 1, 0), 
+('B9F109', 17, 1, 4, 0, 1), ('B9F110', 17, 2, 3, 1, 1), 
+
+('B9F201', 18, 3, 4, 0, 1), ('B9F202', 18, 2, 3, 1, 0), ('B9F203', 18, 1, 3, 1, 1), ('B9F204', 18, 3, 4, 0, 1), 
+('B9F205', 18, 2, 3, 0, 1), ('B9F206', 18, 1, 4, 1, 0), ('B9F207', 18, 3, 4, 1, 1), ('B9F208', 18, 2, 3, 0, 1), 
+('B9F209', 18, 1, 3, 1, 0), ('B9F210', 18, 2, 4, 1, 1),
+
+('B9F301', 19, 1, 3, 0, 1), ('B9F302', 19, 2, 4, 1, 1), ('B9F303', 19, 3, 4, 0, 0), ('B9F304', 19, 2, 3, 0, 1), 
+('B9F305', 19, 1, 4, 1, 1), ('B9F306', 19, 3, 3, 1, 0), ('B9F307', 19, 2, 4, 0, 1), ('B9F308', 19, 1, 3, 1, 0), 
+('B9F309', 19, 2, 4, 0, 1), ('B9F310', 19, 1, 3, 1, 1), 
+
+('B9F401', 20, 3, 4, 1, 0), ('B9F402', 20, 2, 3, 0, 1), ('B9F403', 20, 1, 3, 1, 1), ('B9F404', 20, 2, 4, 0, 0), 
+('B9F405', 20, 3, 4, 1, 1), ('B9F406', 20, 1, 4, 0, 1), ('B9F407', 20, 2, 3, 1, 0), ('B9F408', 20, 3, 4, 0, 1), 
+('B9F409', 20, 1, 3, 0, 1), ('B9F410', 20, 2, 4, 1, 0);
+
+
+INSERT INTO `student` (`Stu_id`, `Name`, `DOB`, `Phone_number`, `Email`, `Gender`, `R_ID`) VALUES
+(20198237, 'Thái Văn Lâm', '2000-01-01', '0123456789', 'lam@example.com', 1, 1),
+(20207592, 'Nguyễn Minh Đức', '2000-05-15', '0987654321', 'duc@example.com', 1, 2),
+(20207586, 'Lê Kỳ Anh', '2001-03-22', '0912345678', 'kyanh@example.com', 1, 3),
+(20207644, 'Hoàng Hà My', '2001-07-10', '0978123456', 'my@example.com', 1, 4);
+
+
+
+INSERT INTO `rent_fee` (`R_ID`, `Period`, `Room_Bill`, `Elec_Bill`, `Internet_Bill`, `Water_Bill`, `Status`)
+SELECT 
+  r.R_ID, 
+  '2024-11', 
+  CASE 
+    WHEN r.Status = 1 THEN 2000000 
+    ELSE 0 
+  END AS Room_Bill,
+  CASE 
+    WHEN r.Status = 1 THEN 150000 
+    ELSE 0 
+  END AS Elec_Bill,
+  CASE 
+    WHEN r.Status = 1 THEN 100000 
+    ELSE 0 
+  END AS Internet_Bill,
+  CASE 
+    WHEN r.Status = 1 THEN 50000 
+    ELSE 0 
+  END AS Water_Bill,
+  r.Status
+FROM 
+  `room` r
+WHERE 
+  r.Status = 1;
+
+
+
+
+INSERT INTO `facility_problem` (`R_ID`, `Content`, `Status`) VALUES
+(1, 'Điều hòa hỏng', 0),
+(2, 'Đèn phòng không sáng', 0),
+(3, 'Cửa sổ bị vỡ', 1),
+(4, 'Máy giặt bị hư', 0),
+(5, 'Cần bảo trì tivi', 1),
+(6, 'Hỏng khóa cửa', 0),
+(7, 'Hệ thống điện bị mất', 1),
+(8, 'Điều hòa cần bảo dưỡng', 0),
+(9, 'Bể nước bị rò rỉ', 1),
+(10, 'Mất điện trong phòng', 0),
+(11, 'Bình nóng lạnh hỏng', 1),
+(12, 'Quạt không chạy', 0),
+(13, 'Mất nước nóng', 1),
+(14, 'Cửa sổ bị hỏng khóa', 0),
+(15, 'Máy lọc nước hư', 1),
+(16, 'Bể bơi hỏng', 0),
+(17, 'Sàn nhà bị thấm nước', 1),
+(18, 'Cần sửa bồn rửa', 0),
+(19, 'Thang máy không hoạt động', 1),
+(20, 'Cửa phòng bị kẹt', 0);
+
+
+INSERT INTO `message_table` (`ID_student`, `Name`, `R_Name`, `Messages`) VALUES
+(20198237, 'Thái Văn Lâm', 'B5F101', 'Xin cấp giấy xác nhận ở KTX'),
+(20207592, 'Nguyễn Minh Đức', 'B5F102', 'Phòng B5F202 làm ồn sau 0h đêm'),
+(20207586, 'Lê Kỳ Anh', 'B5F103', 'Xin cấp thẻ gửi xe máy tháng 12'),
+(20207644, 'Hoàng Hà My', 'B5F104', 'Cơm nhà hàng A không đảm bảo'),
+(20198237, 'Thái Văn Lâm', 'B5F101', 'Xin đổi phòng sang KTX B9');
+
+
